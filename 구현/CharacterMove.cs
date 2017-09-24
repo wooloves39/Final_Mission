@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// 2017 09 24 작업내용 - 작성자 강현웅
+// 키보드를 입력받는 8방향 움직임 구현
+// 기본 Axis(각도 움직임에서) -> Destination(목적지로의 회전+보간)으로 부드러움 움직임 구현
+// 월드 좌표계회전에서 캐릭터 좌표계 회전으로 바꿔서 구현
+
+// 2017 09 23 작업내용 - 작성자 강현웅
 // 캐릭터를 이동시킨다.
 //	캐릭터 이동 알고리즘
 //	
@@ -55,7 +61,33 @@ public class CharacterMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+			//키보드 입력을 받는다.
+			//if (Input.GetKey (KeyCode.A)) {
+			//	this.transform.Translate (Vector3.left * walkSpeed * Time.deltaTime);
+			//}
+
+		//8방향으로 움직임
+		if (Input.GetKey (KeyCode.A)) {
+			SetDestination (this.transform.position+(Vector3.left * 1.0f));
+		}
+		if (Input.GetKey (KeyCode.W))
+			SetDestination (this.transform.position+(Vector3.forward *  1.0f));
+		if (Input.GetKey (KeyCode.S))
+			SetDestination (this.transform.position+(Vector3.back *  1.0f));
+		if (Input.GetKey (KeyCode.D))
+			SetDestination (this.transform.position+(Vector3.right *  1.0f));
+		if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.A)) 
+			SetDestination (this.transform.position+((Vector3.left+Vector3.forward) * 1.0f));
+		if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.D))
+			SetDestination (this.transform.position+((Vector3.right+Vector3.forward) * 1.0f));
+		if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.A))
+			SetDestination (this.transform.position+((Vector3.left+Vector3.back) * 1.0f));
+		if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.D))
+			SetDestination (this.transform.position+((Vector3.right+Vector3.back) * 1.0f));
 		
+	
+
+
 		// 이동 속도 velocity를 갱신한다.
 		if (characterController.isGrounded) {
 			Vector3 destinationXZ = destination;
@@ -82,26 +114,7 @@ public class CharacterMove : MonoBehaviour {
 			else 
 				velocity = direction * walkSpeed;
 
-			{//키보드 입력을 도운다.
-				if (Input.GetKey (KeyCode.A)) {
-					forceRotateDirection= Object.
-				}
-				if (Input.GetKey (KeyCode.W))
-					transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-				if (Input.GetKey (KeyCode.S))
-					transform.rotation = Quaternion.AngleAxis(-180, Vector3.up);
-				if (Input.GetKey (KeyCode.D))
-					transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
 
-				if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.A))
-					transform.rotation = Quaternion.AngleAxis(-45, Vector3.up);
-				if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.D))
-					transform.rotation = Quaternion.AngleAxis(45, Vector3.up);
-				if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.A))
-					transform.rotation = Quaternion.AngleAxis(-135, Vector3.up);
-				if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.D))
-					transform.rotation = Quaternion.AngleAxis(135, Vector3.up);
-			}
 
 			
 			// 부드럽게 보간 처리.
@@ -124,7 +137,6 @@ public class CharacterMove : MonoBehaviour {
 			
 		}
 
-		//8방향으로 움직임
 
 		
 		// 중력.
