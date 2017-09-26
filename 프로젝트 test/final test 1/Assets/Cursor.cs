@@ -8,8 +8,7 @@ public class Cursor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
+        
 		movePosition = Input.mousePosition;
 		transform.position = movePosition;
 	}
