@@ -6,12 +6,15 @@ public class InputManager : MonoBehaviour {
 	Vector2 slideStartPosition;
 	Vector2 prevPosition;
 	Vector2 delta = Vector2.zero;
-	Vector2 movePosition;
 	bool moved = false;
 	GameObject copy;
 	int cnt =0;
-	public GameObject[] arr = new GameObject[250];
-	void Start(){
+	private GameObject[] arr = new GameObject[2];
+    //앞뒤로 만 체크하고 버리고 꼭지점만 저장한다.
+    private GameObject bef;
+    private GameObject af;
+    private GameObject mid;
+    void Start(){
 		copy = Resources.Load ("sphere") as GameObject;
 	}
 
@@ -28,8 +31,32 @@ public class InputManager : MonoBehaviour {
 			if (Vector2.Distance (slideStartPosition, GetCursorPosition ()) >= (Screen.width * 0.02f)) {
 				print ("is Click Ture");
 				copy.transform.position = GetCursorPosition();
-				arr[cnt++] = Instantiate (copy)as GameObject;
-				moved = true;
+                cnt++;
+                if (cnt % 5 == 0)
+                {
+                    af = Instantiate(copy) as GameObject;
+
+                    if (!bef)
+                    {
+                        bef = af;
+                        mid = af;
+                    }
+                    //if (Mathf.Abs((af.gameObject.transform.position.y - bef.gameObject.transform.position.y) / (af.gameObject.transform.position.x - bef.gameObject.transform.position.x)) > 2.0f)
+
+                    //꼭지점 저장
+                    float o1 = Mathf.Atan((af.gameObject.transform.position.y - mid.gameObject.transform.position.y) / (af.gameObject.transform.position.x - mid.gameObject.transform.position.x));
+                    float o2 = Mathf.Atan((bef.gameObject.transform.position.y - mid.gameObject.transform.position.y) / (bef.gameObject.transform.position.x - mid.gameObject.transform.position.x));
+                    float Point = Mathf.Abs(o1 - o2) * Mathf.Rad2Deg;
+
+                    if (Point > 30.0f && Point < 120.0f)
+                    {
+                        Debug.Log(Point);
+                        Debug.Log("꼭지점 저장하라");
+                    }
+                    bef = mid;
+                    mid = af;
+                }
+                moved = true;
 			}
 		}	
 

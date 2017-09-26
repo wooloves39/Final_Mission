@@ -36,7 +36,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1919329341682522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD:프로젝트 test/Test 1/Assets/Resources/Sphere.prefab
   m_LocalPosition: {x: 643, y: 212, z: 0}
+=======
+  m_LocalPosition: {x: 196, y: 163, z: 0}
+>>>>>>> 2270d6ee23288fc6a9c14ae30f837c73b675be73:프로젝트 test/final test 1/Assets/Resources/Sphere.prefab
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
