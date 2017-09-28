@@ -44,7 +44,8 @@ public class CharacterMove : MonoBehaviour {
 	public Vector3 destination; 
 	
 	// 이동 속도.
-	public float walkSpeed = 5.0f;
+	public float walkSpeed =1.0f;
+	public float BackwalkSpeed = 0.5f;
 	
 	// 회전 속도.
 	public float rotationSpeed = 360.0f;
@@ -68,22 +69,16 @@ public class CharacterMove : MonoBehaviour {
 
 		//8방향으로 움직임
 		if (Input.GetKey (KeyCode.A)) {
-			SetDestination (this.transform.position+(Vector3.left * 1.0f));
+			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.Self);
 		}
 		if (Input.GetKey (KeyCode.W))
-			SetDestination (this.transform.position+(Vector3.forward *  1.0f));
+			transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime , Space.Self);
+
 		if (Input.GetKey (KeyCode.S))
-			SetDestination (this.transform.position+(Vector3.back *  1.0f));
+			transform.Translate(Vector3.forward * -BackwalkSpeed * Time.deltaTime , Space.Self);
 		if (Input.GetKey (KeyCode.D))
-			SetDestination (this.transform.position+(Vector3.right *  1.0f));
-		if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.A)) 
-			SetDestination (this.transform.position+((Vector3.left+Vector3.forward) * 1.0f));
-		if (Input.GetKey (KeyCode.W)&&Input.GetKey (KeyCode.D))
-			SetDestination (this.transform.position+((Vector3.right+Vector3.forward) * 1.0f));
-		if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.A))
-			SetDestination (this.transform.position+((Vector3.left+Vector3.back) * 1.0f));
-		if (Input.GetKey (KeyCode.S)&&Input.GetKey (KeyCode.D))
-			SetDestination (this.transform.position+((Vector3.right+Vector3.back) * 1.0f));
+			transform.Translate(Vector3.right * walkSpeed * Time.deltaTime , Space.Self);
+		
 		
 	
 

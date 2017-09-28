@@ -466,11 +466,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326193550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -5}
+  m_LocalPosition: {x: 50, y: 3, z: -45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1700619754}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700619750 stripped
 GameObject:
@@ -504,10 +504,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
---- !u!4 &1700619754 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400044, guid: b5874aa342797744ea4197341a9236ca, type: 3}
-  m_PrefabInternal: {fileID: 398684603}
 --- !u!114 &1700619755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,4 +518,5 @@ MonoBehaviour:
   arrived: 0
   destination: {x: 0, y: 0, z: 0}
   walkSpeed: 5
+  BackwalkSpeed: 3
   rotationSpeed: 360
