@@ -49,7 +49,8 @@ public class CharacterMove : MonoBehaviour {
 	
 	// 회전 속도.
 	public float rotationSpeed = 360.0f;
-	
+
+	public Vector3 playerPosit = Vector3.zero;
 	
 	
 	// Use this for initialization
@@ -69,18 +70,23 @@ public class CharacterMove : MonoBehaviour {
 
 		//8방향으로 움직임
 		if (Input.GetKey (KeyCode.A)) {
-			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.Self);
-		}
-		if (Input.GetKey (KeyCode.W))
-			transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime , Space.Self);
+			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.World);
+			transform.Rotate (Vector3.up*Time.deltaTime);
 
-		if (Input.GetKey (KeyCode.S))
-			transform.Translate(Vector3.forward * -BackwalkSpeed * Time.deltaTime , Space.Self);
-		if (Input.GetKey (KeyCode.D))
-			transform.Translate(Vector3.right * walkSpeed * Time.deltaTime , Space.Self);
-		
-		
-	
+		}
+		if (Input.GetKey (KeyCode.W)) {
+			transform.Translate (Vector3.forward * walkSpeed * Time.deltaTime, Space.World);
+		}
+		if (Input.GetKey (KeyCode.S)) {
+			transform.Translate (Vector3.forward * -BackwalkSpeed * Time.deltaTime, Space.World);
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			transform.Translate (Vector3.right * walkSpeed * Time.deltaTime, Space.World);
+			transform.Rotate (-Vector3.up * Time.deltaTime);
+		}
+
+		//플레이어 포지션을 받아둔다. 
+		playerPosit = this.transform.position;
 
 
 		// 이동 속도 velocity를 갱신한다.
@@ -184,6 +190,8 @@ public class CharacterMove : MonoBehaviour {
 	{
 		return arrived;
 	}
-	
-	
+	public Vector3 GetplayerPosit()
+	{
+		return playerPosit;
+	}
 }

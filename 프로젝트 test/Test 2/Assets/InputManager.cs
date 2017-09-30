@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputManager : MonoBehaviour {
+public class InputManager: MonoBehaviour {
 	Vector2 slideStartPosition;
 	Vector2 prevPosition;
 	Vector2 delta = Vector2.zero;
@@ -20,13 +20,21 @@ public class InputManager : MonoBehaviour {
 			if (Vector2.Distance(slideStartPosition,GetCursorPosition()) >= (Screen.width * 0.1f))
 				moved = true;
 		}
+		//VR에 적용하기 위서 판단
+
 		
 		// 슬라이드가 끝났는가.
-		if (!Input.GetButtonUp("Fire1") && !Input.GetButton("Fire1"))
+		if (!Input.GetButtonUp ("Fire1") && !Input.GetButton ("Fire1")) {
 			// 슬라이드는 끝났다.
 			moved = false; 
+		}
 		
 		// 이동량을 구한다.
+		if (moved)
+			delta = GetCursorPosition() - prevPosition;
+		else
+			delta = Vector2.zero;
+		
 		if (moved)
 			delta = GetCursorPosition() - prevPosition;
 		else
