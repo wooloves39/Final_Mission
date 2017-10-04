@@ -1,18 +1,33 @@
 ﻿
 using UnityEngine;
 using System.Collections;
-
+public struct Pointtype
+{
+  public  Vector3 point;
+   public int type;
+   public bool touch;
+    //public Vector3 v3point;
+    //public void pointbypoint()
+    //{
+    //    v3point.x = point.x;
+    //    v3point.y = point.y;
+    //    v3point.z = 0;
+    //}
+}
 public class InputManager : MonoBehaviour
 {
     Vector2 slideStartPosition;
     Vector2 prevPosition;
     Vector2 delta = Vector2.zero;
-    bool moved = false;
+    public bool moved = false;
     private GameObject copy;
     private GameObject AreaPoint;
     int cnt = 0;
-    private Vector2[,] Area = new Vector2[100, 100];
+    private Pointtype[,] Area = new Pointtype[100,100];
     private Vector2 startArea;
+    public GameObject Arealine;
+    public GameObject testmove;
+    bool touch = false;
     void Start()
     {
         copy = Resources.Load("sphere") as GameObject;
@@ -24,29 +39,53 @@ public class InputManager : MonoBehaviour
         // 슬라이드 시작 지점.
         if (Input.GetButtonDown("Fire1"))
         {
+            touch = true;
             slideStartPosition = GetCursorPosition();
             startArea.x = slideStartPosition.x - 200;
             startArea.y = slideStartPosition.y - 200;
-
-            for (int i = 0; i < 100; ++i)
+            GameObject cube;
+            for (int i = 0; i < 50; ++i)
             {
-                for (int j = 0; j < 100; ++j)
+                for (int j = 0; j < 50; ++j)
                 {
-                    Area[i,j].x = startArea.x + i*4;
-                    Area[i, j].y = startArea.y + j*4;
-                    Vector3 pos;
-                    pos.x= Area[i, j].x;
-                    pos.y= Area[i, j].y;
-                    pos.z = 0;
-                    AreaPoint.transform.position = Area[i, j];
-                    Instantiate(AreaPoint, pos, Quaternion.identity);
+                    Area[i,j].point.x = startArea.x + i*8;
+                    Area[i, j].point.y = startArea.y + j*8;
+                    Area[i, j].point.z = 0 ;
+                    Area[i, j].type = 0;
+                    AreaPoint.transform.position = Area[i, j].point;
+                    cube=Instantiate(AreaPoint, Area[i,j].point, Quaternion.identity,Arealine.transform);
+                    cube.transform.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
                 }
             }
         }
-
+       if (touch == true)
+       {
+            //for (int i = 0; i < Arealine.gameObject.transform.childCount; ++i)
+            //{
+            //    if (Arealine.gameObject.transform.GetChild(i).GetComponent<Collider>() != null) {
+            //        Debug.Log("dd");
+            //        Destroy(testmove.gameObject);
+            //        touch = false;
+            //    }
+            //}
+            testmove.SetActive(true);
+           testmove.transform.Translate(0, 0, 1);
+           if (testmove.transform.position.z == 1)
+           {
+               Destroy(testmove.gameObject);
+               touch = false;
+           }
+       }
         // 화면 너비의 2% 이상 커서를 이동시키면 슬라이드 시작으로 판단한다.
         if (Input.GetButton("Fire1"))
         {
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y,- 10.0f));
+            RaycastHit[] hit = Physics.SphereCastAll(ray, 10.5f);
+            for (int i = 0; i < hit.Length; ++i)
+            {
+                if (hit[i].collider != null)
+                { }
+            }
             if (Vector2.Distance(slideStartPosition, GetCursorPosition()) >= (Screen.width * 0.02f))
             {
                 print("is Click Ture");
