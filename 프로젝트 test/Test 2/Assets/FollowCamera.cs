@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections
+;
+// 2017 10 07 - Y축 좌표한계 조정
+// 카메라 Y한계 삭제시에 지형이랑 캐릭터 충돌 때문에 계속 충돌 판정됨
 
 public class FollowCamera : MonoBehaviour {
 	public float distance = -5.0f;
@@ -21,11 +24,10 @@ public class FollowCamera : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-		// 드래그 입력으로 카메라 회전각을 갱신한다.
 		float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * xangle;
 		rotationY += Input.GetAxis ("Mouse Y") * yangle;
 		//Y축 한계 설정
-		rotationY = Mathf.Clamp (rotationY, -30.0f, 60.0f);
+		rotationY = Mathf.Clamp (rotationY, -60.0f, 80.0f);
 
 		transform.localEulerAngles = new Vector3 (-rotationY, rotationX,0 );
 
