@@ -10,6 +10,9 @@ using System.Collections;
 // 캐릭터를 이동시킨다.
 //	캐릭터 이동 알고리즘
 //	
+// 2017 10 08 작업내용
+// 카메라 회전과 캐릭터 회전을 일치 시킨다.
+
 // 	업데이트시 호출 됨
 //	1. 지면에 닿았는가 ? -> 6번으로
 //	2. 목적지를 구한다.  Vector3 destination
@@ -51,13 +54,14 @@ public class CharacterMove : MonoBehaviour {
 	public float rotationSpeed = 360.0f;
 
 	public Vector3 playerPosit = Vector3.zero;
-	
+
+	FollowCamera followCamera;
 	
 	// Use this for initialization
 	void Start () {
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
-
+		followCamera = FindObjectOfType<FollowCamera>();
 
 	}
 	
@@ -68,20 +72,25 @@ public class CharacterMove : MonoBehaviour {
 			//	this.transform.Translate (Vector3.left * walkSpeed * Time.deltaTime);
 			//}
 
-		//8방향으로 움직임
+		//카메라 방향 만큼 회전
+		Quaternion rotate = Quaternion.identity;
+		rotate.eulerAngles = new Vector3 (0, followCamera.rotationX, 0);
+		this.transform.rotation = Quaternion.Slerp (transform.rotation, rotate, Time.deltaTime*5.0f);
+
+		//4방향으로 움직임
 		if (Input.GetKey (KeyCode.A)) {
-			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.World);
+			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.Self);
 			transform.Rotate (Vector3.up*Time.deltaTime);
 
 		}
 		if (Input.GetKey (KeyCode.W)) {
-			transform.Translate (Vector3.forward * walkSpeed * Time.deltaTime, Space.World);
+			transform.Translate (Vector3.forward * walkSpeed * Time.deltaTime, Space.Self);
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			transform.Translate (Vector3.forward * -BackwalkSpeed * Time.deltaTime, Space.World);
+			transform.Translate (Vector3.forward * -BackwalkSpeed * Time.deltaTime, Space.Self);
 		}
 		if (Input.GetKey (KeyCode.D)) {
-			transform.Translate (Vector3.right * walkSpeed * Time.deltaTime, Space.World);
+			transform.Translate (Vector3.right * walkSpeed * Time.deltaTime, Space.Self);
 			transform.Rotate (-Vector3.up * Time.deltaTime);
 		}
 

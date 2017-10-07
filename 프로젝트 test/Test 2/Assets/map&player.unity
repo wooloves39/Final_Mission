@@ -1220,6 +1220,8 @@ MonoBehaviour:
   offset: {x: 0, y: 1.5, z: 0}
   xangle: 15
   yangle: 15
+  rotationY: 0
+  rotationX: 0
 --- !u!1 &1375015101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,7 +1777,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807664960}
   serializedVersion: 2
-  m_Mass: 10000000
+  m_Mass: 1000000
   m_Drag: 5
   m_AngularDrag: Infinity
   m_UseGravity: 1
