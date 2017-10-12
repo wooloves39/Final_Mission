@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ckeck_collision : MonoBehaviour
 {
-    public Vector3 point;
-    public int type;
-    public bool touch;
+    private int type = 1;
+    private bool touch;
+    private bool check = false;
     // Use this for initialization
     void Start()
     {
@@ -22,7 +22,11 @@ public class ckeck_collision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
-  
+    }
+
+    public void checkon()
+    {
+        type = 2;
+        this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
     }
 }

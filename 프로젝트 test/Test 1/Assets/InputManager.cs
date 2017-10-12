@@ -58,33 +58,20 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-       if (touch == true)
-       {
-            //for (int i = 0; i < Arealine.gameObject.transform.childCount; ++i)
-            //{
-            //    if (Arealine.gameObject.transform.GetChild(i).GetComponent<Collider>() != null) {
-            //        Debug.Log("dd");
-            //        Destroy(testmove.gameObject);
-            //        touch = false;
-            //    }
-            //}
-            testmove.SetActive(true);
-           testmove.transform.Translate(0, 0, 1);
-           if (testmove.transform.position.z == 1)
-           {
-               Destroy(testmove.gameObject);
-               touch = false;
-           }
-       }
+       
         // 화면 너비의 2% 이상 커서를 이동시키면 슬라이드 시작으로 판단한다.
         if (Input.GetButton("Fire1"))
         {
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y,- 10.0f));
-            RaycastHit[] hit = Physics.SphereCastAll(ray, 10.5f);
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] hit = Physics.SphereCastAll(ray, 500.5f);
             for (int i = 0; i < hit.Length; ++i)
             {
-                if (hit[i].collider != null)
-                { }
+                if (hit[i].collider.tag=="check")
+                {
+                    Debug.Log("터치터치팡팡");
+                    hit[i].collider.gameObject.GetComponent<ckeck_collision>().checkon();
+                }
             }
             if (Vector2.Distance(slideStartPosition, GetCursorPosition()) >= (Screen.width * 0.02f))
             {
@@ -99,7 +86,24 @@ public class InputManager : MonoBehaviour
             }
         }
         //잘못된 영역에 닿았는지 판별한다!
-
+        if (touch == true)
+        {
+            //for (int i = 0; i < Arealine.gameObject.transform.childCount; ++i)
+            //{
+            //    if (Arealine.gameObject.transform.GetChild(i).GetComponent<Collider>() != null) {
+            //        Debug.Log("dd");
+            //        Destroy(testmove.gameObject);
+            //        touch = false;
+            //    }
+            //}
+            testmove.SetActive(true);
+            testmove.transform.Translate(0, 0, 1);
+            if (testmove.transform.position.z == 1)
+            {
+                Destroy(testmove.gameObject);
+                touch = false;
+            }
+        }
 
         // 슬라이드가 끝났는가.
         if (!Input.GetButtonUp("Fire1") && !Input.GetButton("Fire1"))
