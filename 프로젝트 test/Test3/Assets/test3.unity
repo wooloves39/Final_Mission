@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a554cddf0ce01ec4cb4ee62259d78e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 1382573381910536, guid: 2351f8ca2d60d03419b5d5a15ece22bc, type: 2}
+  skillcontroller: {fileID: 1768236044407540, guid: 68c4f4bc651a03343b9e7f8a1523edfa,
+    type: 2}
 --- !u!1 &837638638
 GameObject:
   m_ObjectHideFlags: 0
