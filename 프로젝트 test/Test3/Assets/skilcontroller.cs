@@ -18,8 +18,7 @@ public class skilcontroller : MonoBehaviour {
         //첫점
         box_point[0] = Instantiate(boxes, pos, Quaternion.identity, this.transform);
         box_point[0].GetComponent<boxcheck>().Set_index(0);
-        box_point[0].GetComponent<boxcheck>().turnon();
-
+       
         //1차선택
         pos.x += 4;
         box_point[1] = Instantiate(boxes, pos, Quaternion.identity, box_point[0].transform);
@@ -76,7 +75,9 @@ public class skilcontroller : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-	}
+        box_point[0].GetComponent<boxcheck>().turnon();
+
+    }
     public void rec_in(int index,GameObject coll)
     {
         Debug.Log(index);

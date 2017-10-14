@@ -12,7 +12,7 @@ public class boxcheck : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         check = false;
-       // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
