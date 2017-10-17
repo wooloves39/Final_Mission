@@ -9,6 +9,7 @@ public class boxcheck : MonoBehaviour {
    private bool check;
    private int index;
     private int[] haven_point;
+    private bool skill=false;
 	// Use this for initialization
 	void Start () {
         check = false;
@@ -78,5 +79,13 @@ public class boxcheck : MonoBehaviour {
     public void turnoff()
     {
         gameObject.SetActive(false);
+    }
+    public void SetSkill()
+    {
+        skill = true;
+    }
+    public bool GetSkill()
+    {
+        return skill;
     }
 }

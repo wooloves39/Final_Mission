@@ -7,6 +7,7 @@ public class input : MonoBehaviour
     public GameObject skillcontroller;
     private float timer = 0;
     private GameObject skill;
+  
     // Use this for initialization
     void Start()
     {
@@ -26,6 +27,7 @@ public class input : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            skill.GetComponent<skilcontroller>().skillon();
             Destroy(skill.gameObject);
         }
         if (Input.GetMouseButton(0) && timer > 0.2f)
