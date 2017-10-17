@@ -8,7 +8,6 @@ enum Direction{left,right,top,bottom};
 public class boxcheck : MonoBehaviour {
    private bool check;
    private int index;
-    private int[] haven_point;
     private bool skill=false;
 	// Use this for initialization
 	void Start () {
@@ -19,34 +18,16 @@ public class boxcheck : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
+    //터치가 이루어졌을때 자신의 자식 오브젝트들을 활성화시킨다.
     public void touchon()
     {
         check = true;
         this.transform.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
         for (int i = 0; i < this.gameObject.transform.childCount; ++i)
             this.gameObject.transform.GetChild(i).gameObject.GetComponent<boxcheck>().turnon();
-        //GameObject boxes;
-        //Vector3 pos = this.transform.position;
-        //for (int i = 0; i < haven_point.Length; ++i)
-        //{
-        //    switch ((Direction)haven_point[i])
-        //    {
-        //        case Direction.left:
-        //            pos.x -= 4;
-        //            break;
-        //        case Direction.right:
-        //            pos.x += 4;
-        //            break;
-        //        case Direction.top:
-        //            pos.y += 4;
-        //            break;
-        //        case Direction.bottom:
-        //            pos.y -= 4;
-        //            break;
-        //    }
-        //    boxes = Instantiate(this.gameObject, pos, Quaternion.identity, this.gameObject.transform.parent);
-        //}
+       
     }
+    //현재는 사용 X
     public void touchdown()
     {
         check = true;
@@ -63,14 +44,6 @@ public class boxcheck : MonoBehaviour {
     public int Get_index()
     {
         return index;
-    }
-    public void Sethaven(int[] value)
-    { haven_point = new int[value.Length];
-        for (int i = 0; i < value.Length; ++i)
-        {
-            haven_point[i] = value[i];
-        }
-
     }
     public void turnon()
     {
