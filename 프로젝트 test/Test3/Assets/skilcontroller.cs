@@ -103,7 +103,12 @@ public class skilcontroller : MonoBehaviour {
     }
     public void skillon()
     {
-        if (lastchoice.GetComponent<boxcheck>().GetSkill())
-            Debug.Log("스킬 발동!!!");
+        if (lastchoice)
+        {
+            if (lastchoice.GetComponent<boxcheck>().GetSkill())
+                Debug.Log("스킬 발동!!!");
+        }
+        else
+            Destroy(this.gameObject);
     }
 }

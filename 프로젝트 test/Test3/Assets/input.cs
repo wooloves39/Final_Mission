@@ -30,6 +30,7 @@ public class input : MonoBehaviour
             skill.GetComponent<skilcontroller>().skillon();
             Destroy(skill.gameObject);
         }
+        
         if (Input.GetMouseButton(0) && timer > 0.2f)
         {
             timer = 0;
