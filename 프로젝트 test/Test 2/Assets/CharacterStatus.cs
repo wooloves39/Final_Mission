@@ -10,6 +10,10 @@ public class CharacterStatus : MonoBehaviour {
 
 	// name
 	public string characterName = "Enemy1";
-
+	void OnTriggerEnter(Collider other)
+	{
+		HP -= 10;
+		print ("Hit");
+	}
 	
 }

@@ -1618,7 +1618,7 @@ GameObject:
   - component: {fileID: 1480830924}
   - component: {fileID: 1480830923}
   m_Layer: 12
-  m_Name: Sphere
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2142,6 +2142,7 @@ GameObject:
   - component: {fileID: 1807664963}
   - component: {fileID: 1807664962}
   - component: {fileID: 1807664961}
+  - component: {fileID: 1807664969}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -2255,6 +2256,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1807664969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807664960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff33bfd8eb5d7f041a28b3132b05ce7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 100
+  MaxHP: 100
+  Power: 10
+  characterName: Enemy1
 --- !u!1 &1829887356
 GameObject:
   m_ObjectHideFlags: 0
