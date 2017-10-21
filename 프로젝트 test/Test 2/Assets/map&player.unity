@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 1439794512}
   - component: {fileID: 1439794511}
   - component: {fileID: 1439794510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,7 +1492,7 @@ GameObject:
   - component: {fileID: 1480214988}
   - component: {fileID: 1480214987}
   - component: {fileID: 1480214986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1480830922}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2142,7 +2142,7 @@ GameObject:
   - component: {fileID: 1807664963}
   - component: {fileID: 1807664962}
   - component: {fileID: 1807664961}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

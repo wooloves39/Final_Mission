@@ -27,4 +27,13 @@ public class Attack :  MonoBehaviour  {
 			}
 		}
 	}
+	void OnTriggerEnter(Collider other)
+	{
+		Hit ();
+	}
+	void Hit()
+	{
+		attack = false;
+		transform.position = prevposition + new Vector3(0,-100,0);
+	}
 }
