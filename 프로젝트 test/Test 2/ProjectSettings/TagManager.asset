@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - Ground
-  - EnemyHit
+  - Object
   - PlayerHit
-  - EnemyAttack
+  - EnemyHit
   - PlayerAttack
-  - 
+  - EnemyAttack
   - 
   - 
   - 
