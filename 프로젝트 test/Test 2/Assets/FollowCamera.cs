@@ -11,16 +11,12 @@ public class FollowCamera : MonoBehaviour {
 	public float verticalAngle = 10.0f;
 	public Transform lookTarget;
 	public Vector3 offset = Vector3.zero;
-	InputManager inputManager;
 
 	public float xangle = 15.0f;
 	public float yangle = 15.0f;
 	public float rotationY = 0.0f;
 	public float rotationX = 0.0f;
-	void Start()
-	{
-		inputManager = FindObjectOfType<InputManager>();
-	}
+
 
 	// Update is called once per frame
 	void LateUpdate () {

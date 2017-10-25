@@ -5,8 +5,10 @@ using UnityEngine;
 public class Attack :  MonoBehaviour  {
 	public bool attack = false;
 	public float Speed = 5.0f;
+	public int Power = 10;
 	Vector3 prevposition;
 	FollowCamera followCamera;
+	CharacterStatus characterStatus;
 	// Update is called once per frame
 	void Start () {
 		followCamera = FindObjectOfType<FollowCamera>();
@@ -35,7 +37,13 @@ public class Attack :  MonoBehaviour  {
 	void OnTriggerEnter(Collider other)
 	{
 		Hit ();
+		if (other.tag == "Enemy") 
+		{
+			characterStatus = other.GetComponent<CharacterStatus> ();
+			characterStatus.HP -= Power;
+		}
 	}
+
 	void Hit()
 	{
 		//중간에 충돌 발생시 사라지게 만듬.

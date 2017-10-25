@@ -6,20 +6,22 @@ public class CharacterStatus : MonoBehaviour {
 	public int HP = 100;
 	public int MaxHP = 100;
 	public int Power = 10;
+	public Vector3 position;
 	bool Hit = false;
-	CharacterStatus characterStatus;
+	Attack attack;
+	void Start()
+	{
+		position = transform.position;
+	}
 
 	// name
 	public string characterName = "Enemy1";
 	//충돌 체크 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider Object)
 	{
-		characterStatus = GetComponent<CharacterStatus>();
 		if (!Hit) {
 			Hit = true;
-			//other 캐릭터의 파워만큼 감소
-			characterStatus.HP -= characterStatus.Power;
-			print ("Hit");
+			//print ("Hit");
 			Hit = false;
 		}
 	}
