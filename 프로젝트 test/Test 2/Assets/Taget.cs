@@ -16,21 +16,23 @@ public class Taget : MonoBehaviour {
 	void Update () {
 		
 	}
-	void OnTriggerEnter(Collider other)
-	{
-			tageting = true;
-			print ("taget start");
-			characterStatus = FindObjectOfType<CharacterStatus> ();
-			HP = characterStatus.HP;
-			MaxHP = characterStatus.MaxHP;
-			CharacterName = characterStatus.characterName;
-	}
+
 	void OnTriggerStay(Collider other)
 	{
-		tageting = true;
+		characterStatus = other.GetComponent<CharacterStatus> ();
 		HP = characterStatus.HP;
 		MaxHP = characterStatus.MaxHP;
 		CharacterName = characterStatus.characterName;
+	}
+	void OnTriggerExit(Collider other)
+	{
+		tageting = false;
+		print ("taget exit");
+		HP = 0;
+		MaxHP = 0;
+		CharacterName = null;
+		characterStatus = null;
+
 	}
 
 }
