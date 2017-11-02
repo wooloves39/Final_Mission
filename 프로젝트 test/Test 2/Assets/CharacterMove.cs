@@ -47,14 +47,15 @@ public class CharacterMove : MonoBehaviour {
 	public Vector3 destination; 
 	
 	// 이동 속도.
-	public float walkSpeed =1.0f;
-	public float BackwalkSpeed = 0.5f;
+	public float WalkSpeed = 6.0f;
+	public float BackWalkSpeed = 3.0f;
 	
 	// 회전 속도.
 	public float rotationSpeed = 360.0f;
 
 	public Vector3 playerPosit = Vector3.zero;
 
+	private Vector3 moveDirection = Vector3.zero;
 	FollowCamera followCamera;
 	
 	// Use this for initialization
@@ -69,30 +70,29 @@ public class CharacterMove : MonoBehaviour {
 	void Update () {
 			//키보드 입력을 받는다.
 			//if (Input.GetKey (KeyCode.A)) {
-			//	this.transform.Translate (Vector3.left * walkSpeed * Time.deltaTime);
+			//	this.transform.Translate (Vector3.left * WalkSpeed * Time.deltaTime);
 			//}
 
 		//카메라 방향 만큼 회전
 		Quaternion rotate = Quaternion.identity;
 		rotate.eulerAngles = new Vector3 (0, followCamera.rotationX, 0);
-		this.transform.rotation = Quaternion.Slerp (transform.rotation, rotate, Time.deltaTime*5.0f);
+		this.transform.rotation = Quaternion.Slerp (transform.rotation, rotate, Time.deltaTime * 7.5f);
 
 		//4방향으로 움직임
 		if (Input.GetKey (KeyCode.A)) {
-			transform.Translate(Vector3.left * walkSpeed * Time.deltaTime , Space.Self);
-			transform.Rotate (Vector3.up*Time.deltaTime);
-
+			characterController.Move (transform.TransformDirection (Vector3.left) * WalkSpeed * Time.deltaTime );
 		}
 		if (Input.GetKey (KeyCode.W)) {
-			transform.Translate (Vector3.forward * walkSpeed * Time.deltaTime, Space.Self);
+			characterController.Move (transform.TransformDirection (Vector3.forward) * WalkSpeed * Time.deltaTime );
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			transform.Translate (Vector3.forward * -BackwalkSpeed * Time.deltaTime, Space.Self);
+			characterController.Move (transform.TransformDirection (Vector3.forward) * -BackWalkSpeed * Time.deltaTime );
 		}
 		if (Input.GetKey (KeyCode.D)) {
-			transform.Translate (Vector3.right * walkSpeed * Time.deltaTime, Space.Self);
-			transform.Rotate (-Vector3.up * Time.deltaTime);
+			characterController.Move (transform.TransformDirection (Vector3.right) * WalkSpeed * Time.deltaTime );
 		}
+
+
 
 		//플레이어 포지션을 받아둔다. 
 		playerPosit = this.transform.position;
@@ -122,7 +122,7 @@ public class CharacterMove : MonoBehaviour {
 			if (arrived)
 				velocity = Vector3.zero;
 			else 
-				velocity = direction * walkSpeed;
+				velocity = direction * WalkSpeed;
 
 
 

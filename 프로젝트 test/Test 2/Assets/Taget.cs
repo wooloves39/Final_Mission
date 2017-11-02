@@ -8,7 +8,6 @@ public class Taget : MonoBehaviour {
 	public int HP;
 	public int MaxHP;
 	public string CharacterName;
-	bool tageting = false;
 	void Start () {
 		//followCamera = FindObjectOfType<FollowCamera>();
 	}
@@ -16,7 +15,7 @@ public class Taget : MonoBehaviour {
 	void Update () {
 		
 	}
-
+	//충돌 중일때는 정보를 가져온다.
 	void OnTriggerStay(Collider other)
 	{
 		characterStatus = other.GetComponent<CharacterStatus> ();
@@ -24,9 +23,9 @@ public class Taget : MonoBehaviour {
 		MaxHP = characterStatus.MaxHP;
 		CharacterName = characterStatus.characterName;
 	}
+	//충돌을 벗어나면 초기화
 	void OnTriggerExit(Collider other)
 	{
-		tageting = false;
 		print ("taget exit");
 		HP = 0;
 		MaxHP = 0;

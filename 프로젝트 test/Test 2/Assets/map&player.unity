@@ -1959,11 +1959,11 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 1
-  m_SlopeLimit: 5
+  m_SlopeLimit: 10
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &1700619753
 Animator:
   serializedVersion: 3
@@ -2012,8 +2012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrived: 0
   destination: {x: 0, y: 0, z: 0}
-  walkSpeed: 5
-  BackwalkSpeed: 3
+  WalkSpeed: 6
+  BackWalkSpeed: 3
   rotationSpeed: 360
   playerPosit: {x: 0, y: 0, z: 0}
 --- !u!54 &1700619756
