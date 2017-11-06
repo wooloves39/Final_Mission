@@ -71,7 +71,11 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 77
+=======
+  controlID: 11
+>>>>>>> 613baa01a9c5428c5b091b4a1bb1b1fb04378064
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +124,11 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 75
+=======
+  controlID: 9
+>>>>>>> 613baa01a9c5428c5b091b4a1bb1b1fb04378064
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +153,11 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 76
+=======
+  controlID: 10
+>>>>>>> 613baa01a9c5428c5b091b4a1bb1b1fb04378064
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -336,14 +348,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: "C:\\Users\\cdcd8\\OneDrive\\\uBB38\uC11C\\GitHub\\Final_Mission\\\uD504\uB85C\uC81D\uD2B8
+  m_LastProjectPath: "D:\\FIANL_MISSION\\Final_Mission\\Final_Mission\\\uD504\uB85C\uC81D\uD2B8
     test\\Test 2"
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16260000
-    m_LastClickedID: 9750
-    m_ExpandedIDs: 00000000162600007226000000ca9a3bffffff7f
+    m_SelectedIDs: be270000
+    m_LastClickedID: 10174
+    m_ExpandedIDs: 00000000be270000f027000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -371,7 +383,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001626000072260000
+    m_ExpandedIDs: 00000000be270000f0270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -489,7 +501,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 24f6ffff1afcffff0000000074270000
+=======
+    m_ExpandedIDs: c6e9ffff00000000
+>>>>>>> 613baa01a9c5428c5b091b4a1bb1b1fb04378064
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Main Camera
