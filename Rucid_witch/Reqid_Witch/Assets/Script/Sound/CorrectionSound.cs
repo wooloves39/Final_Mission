@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class CorrectionSound : MonoBehaviour {
 
+	AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
-		AudioSource audioSource = GetComponent<AudioSource> ();
+		audioSource = GetComponent<AudioSource> ();
+		audioSource.volume = Singletone.Instance.Sound;
+	}
+	void OnLevelWasLoaded()
+	{
+		audioSource = GetComponent<AudioSource> ();
 		audioSource.volume = Singletone.Instance.Sound;
 	}
 	void Awake()
