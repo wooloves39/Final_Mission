@@ -1,18 +1,69 @@
-﻿# Executables
-*.exe
-*.out
-*.app
+﻿# =============== #
+
+# Unity generated #
+
+# =============== #
+
+Temp/
+
+Obj/
+
+UnityGenerated/
+
+Library/
+
+
+
+# ===================================== #
+
+# Visual Studio / MonoDevelop generated #
+
+# ===================================== #
+
+ExportedObj/
+
+*.svd
+
+*.userprefs
+
+*.csproj
+
+*.pidb
+
+*.suo
 
 *.sln
-*.userprefs
-*.pidb
+
+*.user
+
 *.unityproj
-*.pidb
-*.unityproj
+
+*.booproj
+
+
+
+# ============ #
+
+# OS generated #
+
+# ============ #
+
 .DS_Store
-/Library/FailedAssetImports.txt
-/Library/cache/
-/Library/previews/
-/Library/ScriptAssemblies
-/obj
-/Temp
+
+.DS_Store?
+
+._*
+
+.Spotlight-V100
+
+.Trashes
+
+Icon?
+
+ehthumbs.db
+
+Thumbs.db
+
+
+
+출처: http://maruti.tistory.com/category/TroubleShooting/Unity3D [◁- 디자인/프로그래밍 공방 -▷]
