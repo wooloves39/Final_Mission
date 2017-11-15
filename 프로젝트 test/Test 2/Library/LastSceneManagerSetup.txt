@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "C:/Users/cdcd8/OneDrive/\uBB38\uC11C/GitHub/Final_Mission/Rucid_witch/Reqid_Witch/Assets/Scene/Title_Scene.unity"
+- path: Assets/Scene main/map&player.unity
   isLoaded: 1
   isActive: 1
